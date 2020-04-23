@@ -1,7 +1,8 @@
-import { handleErrors } from "./utils.js";
+import { handleErrors, api } from "./utils.js";
+// import { api } from "./utils";
 
 const logInForm = document.querySelector(".log-in-form");
-const { href: api } = document.querySelector('link[rel="api"]');
+// const { href: api } = document.querySelector('link[rel="api"]');
 
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();

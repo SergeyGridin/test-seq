@@ -11,31 +11,29 @@ app.use(express.static(path.join(__dirname, "public")));
 
 //middleware for custom render
 app.use((req, res, next) => {
-  res.myRender = (path) => {
-    res.render(path, { api });
-  };
+  res.locals.api = api;
   next();
 });
 
 // Define a route.
 app.get("/", (req, res) => {
-  res.myRender("index");
+  res.render("index");
 });
 
 app.get("/sign-up", (req, res) => {
-  res.myRender("sign-up");
+  res.render("sign-up");
 });
 
 app.get("/log-in", (req, res) => {
-  res.myRender("log-in");
+  res.render("log-in");
 });
 
 app.get("/create", (req, res) => {
-  res.myRender("create");
+  res.render("create");
 });
 
 app.get("/profile", (req, res) => {
-  res.myRender("profile");
+  res.render("profile");
 });
 
 // Define a port and start listening for connections.

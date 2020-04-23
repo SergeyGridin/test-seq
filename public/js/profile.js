@@ -1,4 +1,4 @@
-const { href: api } = document.querySelector('link[rel="api"]');
+import { api } from "./utils.js";
 
 const handleDelete = (tweetId) => {
   return async () => {

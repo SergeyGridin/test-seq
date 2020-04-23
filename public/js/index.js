@@ -1,4 +1,4 @@
-import { handleErrors } from "./utils.js";
+import { handleErrors, api } from "./utils.js";
 
 const fetchTweets = async () => {
   const res = await fetch(`${api}tweets`, {
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const form = document.querySelector(".create-form");
-const { href: api } = document.querySelector('link[rel="api"]');
+// const { href: api } = document.querySelector('link[rel="api"]');
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
