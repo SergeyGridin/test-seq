@@ -1,6 +1,7 @@
 import { handleErrors } from "./utils.js";
 
 const logInForm = document.querySelector(".log-in-form");
+const { href: api } = document.querySelector('link[rel="api"]');
 
 logInForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -9,7 +10,7 @@ logInForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const body = { email, password };
   try {
-    const res = await fetch("http://localhost:8080/users/token", {
+    const res = await fetch(`${api}users/token`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {
