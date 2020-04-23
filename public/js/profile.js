@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const { tweets } = await res.json();
     const tweetsContainer = document.querySelector(".tweets-container");
-    debugger;
+
     const tweetsHtml = tweets.map(
       ({ message, id }) => `
       <div class="card" id="tweet-${id}">
@@ -55,7 +55,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     const deleteButtons = document.querySelectorAll(".delete-button");
     if (deleteButtons) {
       deleteButtons.forEach((button) => {
-        debugger;
         button.addEventListener("click", handleDelete(button.id));
       });
     }
