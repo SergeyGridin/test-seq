@@ -1,6 +1,7 @@
 import { handleErrors } from "./utils.js";
 
 const signUpForm = document.querySelector(".sign-up-form");
+const { href: api } = document.querySelector('link[rel="api"]');
 
 signUpForm.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -10,7 +11,7 @@ signUpForm.addEventListener("submit", async (e) => {
   const password = formData.get("password");
   const body = { email, password, username };
   try {
-    const res = await fetch("http://localhost:8080/users", {
+    const res = await fetch(`${api}users`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

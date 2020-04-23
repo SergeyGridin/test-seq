@@ -1,7 +1,7 @@
 import { handleErrors } from "./utils.js";
 
 const fetchTweets = async () => {
-  const res = await fetch("http://localhost:8080/tweets", {
+  const res = await fetch(`${api}tweets`, {
     headers: {
       Authorization: `Bearer ${localStorage.getItem(
         "TWITTER_LITE_ACCESS_TOKEN"
@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const form = document.querySelector(".create-form");
+const { href: api } = document.querySelector('link[rel="api"]');
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -45,7 +46,7 @@ form.addEventListener("submit", async (e) => {
   const message = formData.get("message");
   const body = { message };
   try {
-    const res = await fetch("http://localhost:8080/tweets", {
+    const res = await fetch(`${api}tweets`, {
       method: "POST",
       body: JSON.stringify(body),
       headers: {

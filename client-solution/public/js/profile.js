@@ -1,7 +1,9 @@
+const { href: api } = document.querySelector('link[rel="api"]');
+
 const handleDelete = (tweetId) => {
   return async () => {
     try {
-      const res = await fetch(`http://localhost:8080/tweets/${tweetId}`, {
+      const res = await fetch(`${api}tweets/${tweetId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${localStorage.getItem(
@@ -22,7 +24,7 @@ const handleDelete = (tweetId) => {
 document.addEventListener("DOMContentLoaded", async () => {
   const userId = localStorage.getItem("TWITTER_LITE_CURRENT_USER_ID");
   try {
-    const res = await fetch(`http://localhost:8080/users/${userId}/tweets`, {
+    const res = await fetch(`${api}tweets`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem(
           "TWITTER_LITE_ACCESS_TOKEN"
@@ -35,6 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
     const { tweets } = await res.json();
     const tweetsContainer = document.querySelector(".tweets-container");
+    debugger;
     const tweetsHtml = tweets.map(
       ({ message, id }) => `
       <div class="card" id="tweet-${id}">
@@ -52,6 +55,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const deleteButtons = document.querySelectorAll(".delete-button");
     if (deleteButtons) {
       deleteButtons.forEach((button) => {
+        debugger;
         button.addEventListener("click", handleDelete(button.id));
       });
     }
